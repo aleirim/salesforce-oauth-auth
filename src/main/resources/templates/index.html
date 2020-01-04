@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" >
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Contacts List</title>
+    <link rel="stylesheet" type="text/css"
+          href="css/salesforce-lightning-design-system.css"
+          th:href=@{/css/salesforce-lightning-design-system.css} />
+</head>
+<body>
+<div class="container">
+</div>
+<div class="card">
+  <div class="card-header">
+      <!--org and user info -->
+          <ul class="slds-grid slds-page-header__detail-row ">
+              <li class="slds-page-header__detail-block">
+                  <p class="slds-text-title slds-truncate slds-m-bottom_xx-small font-weight-bold"
+                     title="User">Org Name</p>
+                  <p class="slds-text-body_regular slds-truncate" title=""
+                     id="orgname" th:text="${userInfo.getName()}">OrgName</p>
+              </li>
+          <li class="slds-page-header__detail-block">
+              <p class="slds-text-title slds-truncate slds-m-bottom_xx-small font-weight-bold"
+                 title="User">User</p>
+              <p class="slds-text-body_regular slds-truncate" title=""
+                 id="username" th:text="${userInfo.getUserName()}">Username</p>
+          </li>
+          <li class="slds-page-header__detail-block">
+              <p class="slds-text-title slds-truncate slds-m-bottom_xx-small font-weight-bold"
+                 title="Org id" >Org ID</p>
+              <p class="slds-text-body_regular slds-truncate" title=""
+                 th:text="${userInfo.getOrgId()}">Org ID</p>
+          </li>
+          <li class="slds-page-header__detail-block">
+              <p class="slds-text-title slds-truncate slds-m-bottom_xx-small font-weight-bold"
+                 title="Org edition">Edition</p>
+              <p class="slds-text-body_regular slds-truncate" title=""
+                 th:text="${userInfo.getOrganizationType()}">Org Edition</p>
+          </li>
+      </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title font-weight-bold">Contacts</h5>
+      <!-- table to display the data -->
+      <table class="table">
+          <thead>
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Email</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr class="slds-hint-parent" th:if="${not #lists.isEmpty(contacts)}">
+          <tr th:each="con, custStat : ${contacts}">
+              <td th:text="${custStat.count}">1</td>
+              <td class="slds-truncate" th:text="${con.Id}"></td>
+              <td class="slds-truncate" th:text="${con.Name}"></td>
+              <td class="slds-truncate" th:text="${con.Phone}"></td>
+              <td class="slds-truncate" th:text="${con.Email}"></td>
+
+          </tr>
+          </tbody>
+      </table>
+  </div>
+</div>
+
+<!-- scripts -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
