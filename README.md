@@ -1,8 +1,9 @@
 # Salesforce integration example (oauth2 web-server flow)
 
-Example to obtain a salesforce access token using [Salesforce REST API](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart_oauth.htm). The [web server flow](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm) consists in authorizing a third-party system.
+Spring boot application to obtain a salesforce access token using [Salesforce REST API](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart_oauth.htm). Check [how apps are authenticated using the web server flow](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).
 
 ##Prerequisites
+
 1- [Obtain a salesforce developer edition](https://developer.salesforce.com/signup)
 
 2- [Create a connected app](https://help.salesforce.com/articleView?id=connected_app_create.htm): 
@@ -11,31 +12,31 @@ Example to obtain a salesforce access token using [Salesforce REST API](https://
 - Click New Connected App.
 - Enter the connected app’s name, which displays in the App Manager and on its App Launcher tile. The connected app name must be unique within your org. If the connected app was created in the Spring ‘14 release or later, you can reuse the name of a deleted connected app.
 - Click Enable OAuth Settings and specify your callback URL and OAuth scopes. The Callback URL you supply here is the same as your application’s callback. It must be secured. For development environments, the callback URL is similar to https://localhost:8443/...
-- this is a test
 
 
-## Installation
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
-
+## Run locally
+Download or clone the project
 ```bash
-pip install foobar
+git clone ... 
 ```
 
-## Usage
+Add your org's version, connected app client id and secret to the application properties file:
+```bash
+#consumer key
+security.oauth2.client.client-id = CONNECTED_APP_CLIENT_ID
 
-```python
-import foobar
+#consumer secret
+security.oauth2.client.client-secret = CONNECTED_APP_CLIENT_SECRET
 
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
+#salesforce rest version
+rest-version = VERSION 
 ```
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+Start the local server via Maven
+```bash
+mvn spring-boot:run
+```
+Check out the app at http://localhost:8080
 
-Please make sure to update tests as appropriate.
+![](results.gif)
 
-## License
-[MIT](https://choosealicense.com/licenses/mit/
