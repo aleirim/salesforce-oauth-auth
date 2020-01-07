@@ -2,7 +2,8 @@
 
 Spring boot application to obtain a salesforce access token using [Salesforce REST API](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/quickstart_oauth.htm). Check [how apps are authenticated using the web server flow](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).
 
-##Prerequisites
+
+## Prerequisites
 
 1- [Obtain a salesforce developer edition](https://developer.salesforce.com/signup)
 
